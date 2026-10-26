@@ -5,11 +5,12 @@ import AboutView from './components/AboutView.vue';
 import ContactView from './components/ContactView.vue';
 import Footer from './components/Footer.vue';
 import Services from './components/Services.vue';
+import RoomList from './components/RoomList.vue';
 
 
 export default {
   components: {
-    Navbar, HomeView, AboutView, ContactView, Footer, Services
+    Navbar, HomeView, AboutView, ContactView, Footer, Services, RoomList
   },
   data() {
     return {
@@ -34,6 +35,7 @@ export default {
   <HomeView v-if="page === 'home'" />
   <AboutView v-if="page === 'about'" />
   <Services v-if="page === 'services'"/>
+  <RoomList v-if="page === 'roomlist'"/>
   <ContactView v-if="page === 'contact'" />
   <Footer />
 </template>
