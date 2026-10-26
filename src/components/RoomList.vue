@@ -4,7 +4,7 @@ export default {
 
     data() {
         return {
-            rooms: [
+            Rooms: [
                 {
                     id: 1,
                     name: 'Deluxe Suite',
