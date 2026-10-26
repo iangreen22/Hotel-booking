@@ -20,11 +20,19 @@
                 exceptional hospitality at JIB's Hotel.
             </p>
 
-            <a href="#rooms" class="inline-block mt-8 bg-white text-black px-8 py-3
-                      rounded-md font-semibold hover:bg-zinc-300 transition">
-                Explore Our Rooms
-            </a>
+            <div class="flex gap-5">
+                <a href="#rooms" class="inline-block mt-8 bg-white text-black px-8 py-3
+                      rounded-md font-semibold hover:bg-zinc-300 transition ">
+                    Explore Our Rooms
+                </a>
+                <div class="inline-block mt-8 bg-white rounded-md font-semibold  transition">
+                    <input class="outline-none border h-full px-2 placeholder:text-sm placeholder:text-zinc-500 placeholder:italic" type="text" placeholder="search for available rooms">
+                    
+                    <button class="px-3 h-full hover:bg-zinc-300 rounded-md">search</button>
 
+                </div>
+
+            </div>
         </div>
     </section>
 
@@ -34,7 +42,7 @@
                 <h1 class="text-3xl mt-2 md:text-4xl font-semibold text-gray-800">
                     Our <span class="text-emerald-600"> Featured</span> Rooms
                 </h1>
-            
+
             </div>
             <div class="flex flex-col md:flex-row w-full">
                 <div class="basis-1/3 w-full border border-gray-100 dark:!border-gray-600 rounded-md pr-0 md:mr-4 mt-6">
@@ -139,7 +147,7 @@
             </div>
         </div>
     </div>
-    
+
 
 
 </template>
