@@ -62,7 +62,7 @@ export default {
 
             <div class="flex items-center gap-4">
                 <a href="#"
-                    class="group relative hidden items-center gap-2.5 overflow-hidden rounded-full border-2 border-stone-950 bg-stone-950 px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition-colors duration-300 hover:text-stone-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-lime-400 focus-visible:ring-offset-2 lg:inline-flex">
+                    class="group relative hidden items-center gap-2.5 overflow-hidden rounded-full border-stone-950 px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition-colors duration-300 hover:text-stone-950 lg:inline-flex">
                     <span
                         class="text-white absolute inset-0 -translate-x-full bg-white transition-transform duration-300 ease-out group-hover:translate-x-0"></span>
                     <span class="relative">My Reservation</span>
