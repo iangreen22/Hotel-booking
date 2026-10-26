@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ['room'],
+  props: ['modal'],
 
   methods: {
     closeRoom() {
@@ -13,27 +13,24 @@ export default {
 <template>
   <div class="fixed inset-0 bg-black/50 flex items-center justify-center">
 
-    <div class="bg-white p-6 rounded w-96">
+    <div v-for="i in modal" class="bg-white p-6 rounded w-96">
 
       <h2 class="text-2xl font-bold mb-3">
-        {{ unit.name }}
+        {{ i.name }}
       </h2>
 
-      <img :src="room.image"
+      <img :src="i.image"
         class="w-full h-40 object-cover mb-3">
 
-      <p>Room Type: {{ unit.type }}</p>
-      <p>Guests: {{ unit.capacity }}</p>
-      <p>Price: ${{ unit.price }} per night</p>
+      <p>Room Type: {{ i.type }}</p>
+      <p>Guests: {{ i.capacity }}</p>
+      <p>Price: ${{ i.price }} per night</p>
 
-      <h3 class="font-bold mt-3">Amenities</h3>
+      <h3 class="font-bold mt-3">{{i.amenities}}</h3>
 
-      <p v-for="item in room.amenities" :key="item">
-        • {{ item }}
-      </p>
 
       <button @click="closeRoom"
-        class="bg-[#302218] text-white p-2 rounded mt-4">
+        class="bg-[#302218] text-white p-2 rounded mt-4 cursor-pointer">
         Close
       </button>
 
