@@ -44,7 +44,7 @@ export default {
 </script>
 
 <template>
-    <div class="min-h-screen mt-30 ml-15">
+    <div class=" mt-30 ml-15">
 
         <h1 class="text-3xl font-bold mb-5">
             Our Rooms

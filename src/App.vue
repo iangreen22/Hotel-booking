@@ -6,11 +6,12 @@ import ContactView from './components/ContactView.vue';
 import Footer from './components/Footer.vue';
 import Services from './components/Services.vue';
 import RoomList from './components/RoomList.vue';
+import RoomCard from './components/RoomCard.vue';
 
 
 export default {
     components: {
-        Navbar, HomeView, AboutView, ContactView, Footer, Services, RoomList
+        Navbar, HomeView, AboutView, ContactView, Footer, Services, RoomList, RoomCard
     },
     data() {
         return {
@@ -21,7 +22,7 @@ export default {
                     type: 'Suite',
                     price: 195,
                     capacity: 4,
-                    image: '/images/suite.jpg',
+                    image: 'https://i.pinimg.com/736x/89/2e/a0/892ea0095c64f9ca3e5578bfc77faf3c.jpg',
                     amenities: ['WiFi', 'Aircon', 'TV', 'Breakfast']
                 },
                 {
@@ -30,7 +31,7 @@ export default {
                     type: 'Deluxe',
                     price: 125,
                     capacity: 2,
-                    image: '/images/deluxe.jpg',
+                    image: 'https://i.pinimg.com/1200x/95/dc/ed/95dced36ebd93d4ce37933994a63fa20.jpg',
                     amenities: ['WiFi', 'Aircon', 'TV']
                 },
                 {
@@ -39,7 +40,7 @@ export default {
                     type: 'Standard',
                     price: 95,
                     capacity: 2,
-                    image: '/images/standard.jpg',
+                    image: 'https://i.pinimg.com/1200x/99/66/d3/9966d3a090a385e078aeefca30ef9465.jpg',
                     amenities: ['WiFi', 'Aircon']
                 },
                 {
@@ -48,7 +49,7 @@ export default {
                     type: 'Suite',
                     price: 220,
                     capacity: 5,
-                    image: '/images/family.jpg',
+                    image: 'https://i.pinimg.com/1200x/2c/20/68/2c2068977745bed2fa04faf971696df4.jpg',
                     amenities: ['WiFi', 'Aircon', 'TV', 'Breakfast']
                 },
                 {
@@ -57,7 +58,7 @@ export default {
                     type: 'Standard',
                     price: 110,
                     capacity: 2,
-                    image: '/images/twin.jpg',
+                    image: 'https://i.pinimg.com/736x/a5/85/66/a585664f7436275f126faebcf9fc49b4.jpg',
                     amenities: ['WiFi', 'TV']
                 },
                 {
@@ -66,7 +67,7 @@ export default {
                     type: 'Deluxe',
                     price: 165,
                     capacity: 3,
-                    image: '/images/executive.jpg',
+                    image: 'https://i.pinimg.com/736x/5d/7d/76/5d7d7682b55ad24642df5b72b899cd0e.jpg',
                     amenities: ['WiFi', 'Aircon', 'TV', 'Mini Bar']
                 }
             ],
@@ -91,7 +92,8 @@ export default {
     <HomeView v-if="page === 'home'" />
     <AboutView v-if="page === 'about'" />
     <Services v-if="page === 'services'" />
-    <RoomList v-if="page === 'roomlist'" :roomData="rooms" />
+    <RoomList v-if="page === 'roomlist'" />
+    <RoomCard v-if="page === 'roomlist'" :room="rooms" />
     <ContactView v-if="page === 'contact'" />
     <Footer />
 </template>

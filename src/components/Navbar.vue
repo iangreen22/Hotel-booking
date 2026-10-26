@@ -13,7 +13,8 @@ export default {
 </script>
 <template>
 
-    <header class="absolute inset-x-0 top-0 z-50 w-full">
+    <header class="fixed top-0 left-0 z-50 w-full">
+  
         <nav class="mx-auto flex h-24 max-w-[1600px] items-center justify-between px-5 sm:px-8 lg:px-12 bg-black/50 backdrop-blur-md"
             aria-label="Main navigation">
             <a href="#"
@@ -71,9 +72,6 @@ export default {
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                 </a>
-
-
-
             </div>
         </nav>
     
