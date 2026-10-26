@@ -7,11 +7,12 @@ import Footer from './components/Footer.vue';
 import Services from './components/Services.vue';
 import RoomList from './components/RoomList.vue';
 import RoomCard from './components/RoomCard.vue';
+import RoomModal from './components/RoomModal.vue';
 
 
 export default {
     components: {
-        Navbar, HomeView, AboutView, ContactView, Footer, Services, RoomList, RoomCard
+        Navbar, HomeView, AboutView, ContactView, Footer, Services, RoomList, RoomCard, RoomModal
     },
     data() {
         return {
@@ -72,6 +73,8 @@ export default {
                 }
             ],
             page: 'home',
+            showModal: [],
+            modalCard: false
 
         }
     },
@@ -79,6 +82,15 @@ export default {
         showHome(i) {
             this.page = i;
         },
+
+        showDetails(price){
+            this.showModal.push({...price});
+            this.modalCard = true;  
+        },  
+
+        closeModal(){
+            this.modalCard = false;
+        }
 
     }
 
@@ -93,7 +105,12 @@ export default {
     <AboutView v-if="page === 'about'" />
     <Services v-if="page === 'services'" />
     <RoomList v-if="page === 'roomlist'" />
-    <RoomCard v-if="page === 'roomlist'" :room="rooms" />
+    <RoomCard v-if="page === 'roomlist'" :room="rooms" @toRoom="showDetails"/>
+    <RoomModal v-if="modalCard" :modal="showModal" @close="closeModal"/>
     <ContactView v-if="page === 'contact'" />
     <Footer />
+
+    <div class="w-full h-screen">
+        {{ showModal }}
+    </div>
 </template>
