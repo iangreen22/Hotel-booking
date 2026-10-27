@@ -8,11 +8,12 @@ import Services from './components/Services.vue';
 import RoomList from './components/RoomList.vue';
 import RoomCard from './components/RoomCard.vue';
 import RoomModal from './components/RoomModal.vue';
+import ReservationForm from './components/ReservationForm.vue';
 
 
 export default {
     components: {
-        Navbar, HomeView, AboutView, ContactView, Footer, Services, RoomList, RoomCard, RoomModal
+        Navbar, HomeView, AboutView, ContactView, Footer, Services, RoomList, RoomCard, RoomModal, ReservationForm
     },
     data() {
         return {
@@ -74,7 +75,9 @@ export default {
             ],
             page: 'home',
             showModal: [],
-            modalCard: false
+            formInfo: [],
+            modalCard: false,
+            form: false
 
         }
     },
@@ -86,10 +89,16 @@ export default {
         showDetails(name, type, price, capacity, image, amenities){
             this.showModal.push({...name,...type,...price, ...capacity, ...image, ...amenities});
             this.modalCard = true;  
-        },  
+        }, 
+
+        showForm(name, checkIn, checkOut, guests){
+            this.formInfo.push({...name, ...checkIn, ...checkOut, ...guests })
+            this.form = true;
+        },
 
         closeModal(){
             this.modalCard = false;
+            this.form = false;
             this.showModal = [];
         }
 
@@ -106,9 +115,10 @@ export default {
     <AboutView v-if="page === 'about'" />
     <Services v-if="page === 'services'" />
     <RoomList v-if="page === 'roomlist'" />
-    <RoomCard v-if="page === 'roomlist'" :room="rooms" @toRoom="showDetails"/>
+    <RoomCard v-if="page === 'roomlist'" :room="rooms" @toRoom="showDetails" @bookRoom="showForm"/>
     <RoomModal v-if="modalCard" :modal="showModal" @close="closeModal"/>
     <ContactView v-if="page === 'contact'" />
+    <ReservationForm v-if="form" @close="closeModal"/>
     <Footer />
 
     <div class="w-full h-screen">
