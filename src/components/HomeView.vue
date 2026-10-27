@@ -3,7 +3,7 @@
 
 <template>
     <section class="min-h-screen flex items-center bg-cover bg-center"
-        style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1800&q=80');">
+        style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('https://plus.unsplash.com/premium_photo-1661929519129-7a76946c1d38?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D');">
 
         <div class="max-w-7xl mx-auto px-6 py-24 w-full">
 
@@ -26,8 +26,10 @@
                     Explore Our Rooms
                 </a>
                 <div class="inline-block mt-8 bg-white rounded-md font-semibold  transition">
-                    <input class="outline-none border h-full px-2 placeholder:text-sm placeholder:text-zinc-500 placeholder:italic" type="text" placeholder="search for available rooms">
-                    
+                    <input
+                        class="outline-none border h-full px-2 placeholder:text-sm placeholder:text-zinc-500 placeholder:italic"
+                        type="text" placeholder="search for available rooms">
+
                     <button class="px-3 h-full hover:bg-zinc-300 rounded-md">search</button>
 
                 </div>
