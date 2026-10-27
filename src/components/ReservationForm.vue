@@ -5,10 +5,10 @@ export default {
     data() {
         return {
             fullName: '',
-            guests: '1',
             checkIn: '',
             checkOut: '',
-            totalNights: 0
+            totalNights: 0,
+            roomPrice: 2500
         }
     },
 
@@ -33,129 +33,101 @@ export default {
             if (this.totalNights <= 0) {
                 this.totalNights = 0
             }
+        },
+
+        toConfirm(){
+            this.$emit('goConfirm')
         }
     }
 }
 </script>
 
-
 <template>
+    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
 
-    <div class="fixed inset-0 bg-black/50">
-        <div class="min-h-screen flex items-center justify-center px-4 py-4 mt-10">
-            <div class="w-full max-w-4xl">
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                    <!-- Header -->
-                    <div class="bg-black border py-6 px-8 text-white flex justify-between">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <h1 class="text-3xl font-bold">JIB HOTEL</h1>
-                                <p class="text-blue-100">Luxury stays in the heart of the city</p>
-                            </div>
-                            <div class="text-4xl">
-                                <i class="fas fa-hotel"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <button @click="closeForm"
-                                class="text-2xl font-semibold bg-white text-black cursor-pointer hover:scale-105 rounded-full px-5">X</button>
-                        </div>
+        <div class="w-full max-w-lg overflow-hidden rounded-xl bg-white shadow-xl">
+
+            <!-- Header -->
+            <div class="flex items-center justify-between bg-black px-6 py-5 text-white">
+                <div>
+                    <h1 class="text-2xl font-bold">JIB HOTEL</h1>
+                    <p class="text-sm text-gray-300">Room Reservation</p>
+                </div>
+
+                <button @click="closeForm" type="button" class="rounded-full px-3 py-1 text-xl hover:bg-gray-700">
+                    &times;
+                </button>
+            </div>
+
+            <!-- Reservation Form -->
+            <form @submit.prevent="calculateNights" class="space-y-5 p-6">
+
+                <!-- Full Name -->
+                <div>
+                    <label class="mb-2 block font-semibold text-gray-700">
+                        Full Name
+                    </label>
+
+                    <input v-model="fullName" type="text" placeholder="Enter your full name" required
+                        class="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
+                </div>
+
+                <!-- Check-in -->
+                <div>
+                    <label class="mb-2 block font-semibold text-gray-700">
+                        Check-in Date
+                    </label>
+
+                    <input v-model="checkIn" @change="calculateNights" type="date"
+                        :min="new Date().toLocaleDateString('en-CA')" required
+                        class="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-blue-500">
+                </div>
+
+                <!-- Check-out -->
+                <div>
+                    <label class="mb-2 block font-semibold text-gray-700">
+                        Check-out Date
+                    </label>
+
+                    <input v-model="checkOut" @change="calculateNights" type="date"
+                        :min="checkIn || new Date().toLocaleDateString('en-CA')" required
+                        class="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none focus:border-blue-500">
+                </div>
+
+                <!-- Total Cost -->
+                <div class="rounded-lg bg-gray-100 p-5">
+                    <div class="flex justify-between text-gray-600">
+                        <span>Room Price / Night</span>
+                        <span>₱{{ roomPrice.toLocaleString() }}</span>
                     </div>
 
-                    <!-- Booking Form -->
-                    <form class="p-8 space-y-2">
-                        <h2 class="text-2xl font-bold text-gray-800 border-b pb-2">Book Your Room</h2>
+                    <div class="mt-3 flex justify-between text-gray-600">
+                        <span>Total Nights</span>
+                        <span>{{ totalNights }}</span>
+                    </div>
 
-                        <!-- Guest Information -->
-                        <div class="space-y-4">
-                            <h3 class="text-lg font-semibold text-gray-700">Guest Information</h3>
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full
-                                        Name</label>
-                                    <input type="text" id="fullName" name="fullName" required
-                                        class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                                </div>
-                                <div>
-                                    <label for="guests" class="block text-sm font-medium text-gray-700 mb-1">Number
-                                        of Guests</label>
-                                    <select id="guests" name="guests" required
-                                        class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                                        <option value="1">1 Guest</option>
-                                        <option value="2">2 Guests</option>
-                                        <option value="3">3 Guests</option>
-                                        <option value="4">4 Guests</option>
-                                        <option value="4+">More than 4</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="mt-4 flex justify-between border-t border-gray-300 pt-4">
+                        <span class="text-lg font-bold text-gray-800">
+                            Total Cost
+                        </span>
 
-                        <!-- Dates -->
-                        <div class="space-y-4">
-                            <h3 class="text-lg font-semibold text-gray-700">Stay Dates</h3>
-                            <div class="grid grid-cols-2 gap-6">
-                                <!-- Check-in Date -->
-                                <div>
-                                    <label for="checkIn" class="block text-sm font-medium text-gray-700 mb-1">
-                                        Check-in Date
-                                    </label>
+                        <span class="text-2xl font-bold text-blue-900">
+                            ₱{{ (totalNights * roomPrice).toLocaleString() }}
+                        </span>
+                    </div>
 
-                                    <input type="date" id="checkIn" v-model="checkIn"
-                                        :min="new Date().toLocaleDateString('en-CA')" @change="calculateNights" required
-                                        class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500">
-                                </div>
-
-                                <!-- Check-out Date -->
-                                <div>
-                                    <label for="checkOut" class="block text-sm font-medium text-gray-700 mb-1">
-                                        Check-out Date
-                                    </label>
-
-                                    <input type="date" id="checkOut" v-model="checkOut"
-                                        :min="checkIn || new Date().toLocaleDateString('en-CA')"
-                                        @change="calculateNights" required
-                                        class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Stay Duration -->
-                        <div v-if="checkIn && checkOut" class="mt-4 p-4 rounded-lg"
-                            :class="totalNights > 0 ? 'bg-blue-50' : 'bg-red-50'">
-
-                            <h3 class="text-lg font-bold text-gray-800">
-                                Stay Summary
-                            </h3>
-
-                            <p v-if="totalNights > 0" class="text-blue-700 mt-2">
-                                Check-in: {{ checkIn }}
-                            </p>
-
-                            <p v-if="totalNights > 0" class="text-blue-700">
-                                Check-out: {{ checkOut }}
-                            </p>
-
-                            <p v-if="totalNights > 0" class="font-bold text-lg mt-2">
-                                Total Stay: {{ totalNights }}
-                                {{ totalNights === 1 ? 'night' : 'nights' }}
-                            </p>
-
-                            <p v-else class="text-red-600 font-medium">
-                                Check-out must be later than check-in.
-                            </p>
-                        </div>
-
-                        <!-- Payment and Submit -->
-                        <div class="space-y-4">
-                            <button type="submit"
-                                class="w-full py-3 px-4 bg-black hover:bg-gray-950 cursor-pointer rounded-lg text-white font-bold text-lg shadow-md hover:shadow-lg transition duration-300">
-                                <i class="fas fa-calendar-check mr-2"></i> Confirm Reservation
-                            </button>
-                        </div>
-                    </form>
+                    <p v-if="checkIn && checkOut && totalNights === 0" class="mt-3 text-sm text-red-600">
+                        Check-out must be later than check-in.
+                    </p>
                 </div>
-            </div>
+
+                <!-- Confirm Button -->
+                <button @click="toConfirm" type="submit" :disabled="totalNights <= 0"
+                    class="w-full rounded-lg bg-black py-3 font-bold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50">
+                    Confirm Reservation
+                </button>
+
+            </form>
         </div>
     </div>
 </template>
