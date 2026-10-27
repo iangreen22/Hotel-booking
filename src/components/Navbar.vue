@@ -44,13 +44,7 @@ export default {
                         SERVICES
                     </a>
                 </li>
-
-                <li>
-                    <a @click="menu('roomlist')" href="#"
-                        class="text-sm font-bold uppercase tracking-[0.08em] text-white hover:border-b hover:border-white ">
-                        Rooms
-                    </a>
-                </li>
+                
             
                 <li>
                     <a @click="menu('contact')" href="#"
@@ -62,11 +56,11 @@ export default {
             </ul>
 
             <div class="flex items-center gap-4">
-                <a href="#"
+                <a href="#" @click="menu('res')"
                     class="group relative hidden items-center gap-2.5 overflow-hidden rounded-full border-stone-950 px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white transition-colors duration-300 hover:text-stone-950 lg:inline-flex">
                     <span
                         class="text-white absolute inset-0 -translate-x-full bg-white transition-transform duration-300 ease-out group-hover:translate-x-0"></span>
-                    <span class="relative">My Reservation</span>
+                    <span  class="relative">My Reservation</span>
                     <svg class="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                         fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
