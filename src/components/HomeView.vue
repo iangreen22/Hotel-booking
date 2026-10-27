@@ -1,4 +1,15 @@
 <script>
+export default {
+    emits: ['go-home'],
+    data() {
+        return {}
+    },
+    methods: {
+        menu(page) {
+            this.$emit('go-home', page)
+        }
+    }
+}
 </script>
 
 <template>
@@ -21,16 +32,16 @@
             </p>
 
             <div class="flex gap-5">
-                <a href="#rooms" class="inline-block mt-8 bg-white text-black px-8 py-3
+                <a @click="menu('roomlist')" href="#rooms" class="inline-block mt-8 bg-white text-black px-8 py-3
                       rounded-md font-semibold hover:bg-zinc-300 transition ">
                     Explore Our Rooms
                 </a>
                 <div class="inline-block mt-8 bg-white rounded-md font-semibold  transition">
                     <input
-                        class="outline-none border h-full px-2 placeholder:text-sm placeholder:text-zinc-500 placeholder:italic"
+                        class="outline-none rounded-l-md border border-zinc-500 h-full px-2 placeholder:text-sm placeholder:text-zinc-500 placeholder:italic placeholder:font-normal"
                         type="text" placeholder="search for available rooms">
 
-                    <button class="px-3 h-full hover:bg-zinc-300 rounded-md">search</button>
+                    <button class="px-3 h-full hover:bg-zinc-300 rounded-r-md">search</button>
 
                 </div>
 

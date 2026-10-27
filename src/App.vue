@@ -9,11 +9,12 @@ import RoomList from './components/RoomList.vue';
 import RoomCard from './components/RoomCard.vue';
 import RoomModal from './components/RoomModal.vue';
 import ReservationForm from './components/ReservationForm.vue';
+import ReservationView from './components/ReservationView.vue';
 
 
 export default {
     components: {
-        Navbar, HomeView, AboutView, ContactView, Footer, Services, RoomList, RoomCard, RoomModal, ReservationForm
+        Navbar, HomeView, AboutView, ContactView, Footer, Services, RoomList, RoomCard, RoomModal, ReservationForm, ReservationView
     },
     data() {
         return {
@@ -117,13 +118,14 @@ export default {
 
 <template>
     <Navbar @go-home="showHome" />
-    <HomeView v-if="page === 'home'" />
+    <HomeView v-if="page === 'home'"  @go-home="showHome" />
     <AboutView v-if="page === 'about'" />
     <Services v-if="page === 'services'" />
     <RoomList v-if="page === 'roomlist'" />
     <RoomCard v-if="page === 'roomlist'" :room="rooms" @toRoom="showDetails" @bookRoom="showForm"/>
     <RoomModal v-if="modalCard" :modal="showModal" @close="closeModal"/>
     <ContactView v-if="page === 'contact'" />
+    <ReservationView v-if="page === 'res' "/>
     <ReservationForm v-if="form" @close="closeModal" :toForm="showModal" @goConfirm="showConfirmForm"/>
     <Footer />
 </template>
