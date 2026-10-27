@@ -120,8 +120,4 @@ export default {
     <ContactView v-if="page === 'contact'" />
     <ReservationForm v-if="form" @close="closeModal"/>
     <Footer />
-
-    <div class="w-full h-screen">
-        {{ showModal }}
-    </div>
 </template>
