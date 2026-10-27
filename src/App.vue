@@ -77,6 +77,7 @@ export default {
             page: 'home',
             showModal: [],
             formInfo: [],
+            showConfirmModal: [],
             modalCard: false,
             form: false
 
@@ -92,8 +93,13 @@ export default {
             this.modalCard = true;  
         }, 
 
-        showForm(name, checkIn, checkOut, guests){
-            this.formInfo.push({...name, ...checkIn, ...checkOut, ...guests })
+        showForm(fullName,guests, checkIn, checkOut){
+            this.formInfo.push({...fullName,...guests, ...checkIn, ...checkOut})
+            this.form = true;
+        },
+
+        showConfirmForm(fullName,guests, checkIn, checkOut, totalNights,roomPrice, totalCost){
+            this.confirmInfo.push({...fullName,...guests, ...checkIn, ...checkOut, ...totalNights,...roomPrice, ...totalCost})
             this.form = true;
         },
 
@@ -119,7 +125,7 @@ export default {
     <RoomCard v-if="page === 'roomlist'" :room="rooms" @toRoom="showDetails" @bookRoom="showForm"/>
     <RoomModal v-if="modalCard" :modal="showModal" @close="closeModal"/>
     <ContactView v-if="page === 'contact'" />
-    <ReservationForm v-if="form" @close="closeModal"/>
     <ReservationView v-if="page === 'res' "/>
+    <ReservationForm v-if="form" @close="closeModal" :toForm="showModal" @goConfirm="showConfirmForm"/>
     <Footer />
 </template>
