@@ -10,11 +10,12 @@ import RoomCard from './components/RoomCard.vue';
 import RoomModal from './components/RoomModal.vue';
 import ReservationForm from './components/ReservationForm.vue';
 import ReservationView from './components/ReservationView.vue';
+import ConfirmationModal from './components/ConfirmationModal.vue';
 
 
 export default {
     components: {
-        Navbar, HomeView, AboutView, ContactView, Footer, Services, RoomList, RoomCard, RoomModal, ReservationForm, ReservationView
+        Navbar, HomeView, AboutView, ContactView, Footer, Services, RoomList, RoomCard, RoomModal, ReservationForm, ReservationView, ConfirmationModal
     },
     data() {
         return {
@@ -79,7 +80,8 @@ export default {
             formInfo: [],
             showConfirmModal: [],
             modalCard: false,
-            form: false
+            form: false,
+            confirm: false
 
         }
     },
@@ -99,13 +101,15 @@ export default {
         },
 
         showConfirmForm(fullName,guests, checkIn, checkOut, totalNights,roomPrice, totalCost){
-            this.confirmInfo.push({...fullName,...guests, ...checkIn, ...checkOut, ...totalNights,...roomPrice, ...totalCost})
-            this.form = true;
+            this.showConfirmModal.push({...fullName,...guests, ...checkIn, ...checkOut, ...totalNights,...roomPrice, ...totalCost})
+            this.confirm = true;
+            this.form = false
         },
 
         closeModal(){
             this.modalCard = false;
             this.form = false;
+            this.confirm = false;
             this.showModal = [];
         }
 
@@ -127,5 +131,6 @@ export default {
     <ContactView v-if="page === 'contact'" />
     <ReservationView v-if="page === 'res' "/>
     <ReservationForm v-if="form" @close="closeModal" :toForm="showModal" @goConfirm="showConfirmForm"/>
+    <ConfirmationModal v-if="confirm" :toConfirm="showConfirmModal" @close="closeModal" />
     <Footer />
 </template>

@@ -155,7 +155,7 @@ export default {
                 </div>
 
                 <!-- Confirm Button -->
-                <button type="submit" :disabled="totalNights <= 0 || guests < 1 || guests > 10"
+                <button @click="toConfirm(fullName, guests, checkIn, checkOut, totalNights, roomPrice, totalNights * roomPrice)" type="submit" :disabled="totalNights <= 0 || guests < 1 || guests > 10"
                     class="w-full rounded-lg bg-black py-3 font-bold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50">
                     Confirm Reservation
                 </button>
