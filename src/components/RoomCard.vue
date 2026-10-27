@@ -46,7 +46,7 @@ export default {
           </button>
 
           <button @click="bookRoom" class="bg-green-700 text-white p-2 rounded cursor-pointer hover:bg-green-600">
-            Book Now
+            Reservation
           </button>
         </div>
       </div>
