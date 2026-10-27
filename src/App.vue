@@ -24,7 +24,7 @@ export default {
                     price: 195,
                     capacity: 4,
                     image: 'https://i.pinimg.com/736x/89/2e/a0/892ea0095c64f9ca3e5578bfc77faf3c.jpg',
-                    amenities: ['WiFi', 'Aircon', 'TV', 'Breakfast']
+                    amenities: 'WiFi, Aircon, TV, Breakfast'
                 },
                 {
                     id: 2,
@@ -33,7 +33,7 @@ export default {
                     price: 125,
                     capacity: 2,
                     image: 'https://i.pinimg.com/1200x/95/dc/ed/95dced36ebd93d4ce37933994a63fa20.jpg',
-                    amenities: ['WiFi', 'Aircon', 'TV']
+                    amenities: 'WiFi, Aircon, TV'
                 },
                 {
                     id: 3,
@@ -42,7 +42,7 @@ export default {
                     price: 95,
                     capacity: 2,
                     image: 'https://i.pinimg.com/1200x/99/66/d3/9966d3a090a385e078aeefca30ef9465.jpg',
-                    amenities: ['WiFi', 'Aircon']
+                    amenities: 'WiFi, Aircon'
                 },
                 {
                     id: 4,
@@ -51,7 +51,7 @@ export default {
                     price: 220,
                     capacity: 5,
                     image: 'https://i.pinimg.com/1200x/2c/20/68/2c2068977745bed2fa04faf971696df4.jpg',
-                    amenities: ['WiFi', 'Aircon', 'TV', 'Breakfast']
+                    amenities: 'WiFi, Aircon, TV, Breakfast'
                 },
                 {
                     id: 5,
@@ -60,7 +60,7 @@ export default {
                     price: 110,
                     capacity: 2,
                     image: 'https://i.pinimg.com/736x/a5/85/66/a585664f7436275f126faebcf9fc49b4.jpg',
-                    amenities: ['WiFi', 'TV']
+                    amenities: 'WiFi, TV'
                 },
                 {
                     id: 6,
@@ -69,7 +69,7 @@ export default {
                     price: 165,
                     capacity: 3,
                     image: 'https://i.pinimg.com/736x/5d/7d/76/5d7d7682b55ad24642df5b72b899cd0e.jpg',
-                    amenities: ['WiFi', 'Aircon', 'TV', 'Mini Bar']
+                    amenities: 'WiFi, Aircon, TV, Mini Bar'
                 }
             ],
             page: 'home',
@@ -83,13 +83,14 @@ export default {
             this.page = i;
         },
 
-        showDetails(price){
-            this.showModal.push({...price});
+        showDetails(name, type, price, capacity, image, amenities){
+            this.showModal.push({...name,...type,...price, ...capacity, ...image, ...amenities});
             this.modalCard = true;  
         },  
 
         closeModal(){
             this.modalCard = false;
+            this.showModal = [];
         }
 
     }
