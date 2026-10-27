@@ -44,6 +44,12 @@ export default {
                         SERVICES
                     </a>
                 </li>
+                <li>
+                    <a @click="menu('roomlist')" href="#"
+                        class="text-sm font-bold uppercase tracking-[0.08em] text-white hover:border-b hover:border-white ">
+                        ROOMS
+                    </a>
+                </li>
                 
             
                 <li>
