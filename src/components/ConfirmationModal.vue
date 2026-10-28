@@ -5,8 +5,8 @@ export default {
     emits: ['goConfirm', 'close'],
 
     methods: {
-        confirmBooking(fullName,guests, checkIn, checkOut, totalNights,roomPrice, totalCost) {
-            this.$emit('goConfirm',{
+        confirmBooking(fullName, guests, checkIn, checkOut, totalNights, roomPrice, totalCost) {
+            this.$emit('goConfirm', {
                 fullName: fullName,
                 guests: guests,
                 checkIn: checkIn,
@@ -109,21 +109,21 @@ export default {
                         ₱{{ (firm.totalNights * firm.roomPrice).toLocaleString('en-PH') }}
                     </span>
                 </div>
+
+                <!-- Buttons -->
+                <div class="flex gap-3 px-6 pb-6">
+                    <button type="button" @click="closeModal"
+                        class="flex-1 rounded-lg border border-gray-300 px-4 py-3 font-semibold text-gray-700 hover:bg-gray-100">
+                        Go Back
+                    </button>
+
+                    <button type="button" @click="confirmBooking(firm.fullName, firm.guests, firm.checkIn, firm.checkOut, firm.totalNights, firm.totalCost,firm.roomPrice)"
+                        class="flex-1 rounded-lg bg-black px-4 py-3 font-semibold text-white transition hover:bg-gray-800">
+                        Confirm Booking
+                    </button>
+                </div>
+
             </div>
-
-            <!-- Buttons -->
-            <div class="flex gap-3 px-6 pb-6">
-                <button type="button" @click="closeModal"
-                    class="flex-1 rounded-lg border border-gray-300 px-4 py-3 font-semibold text-gray-700 hover:bg-gray-100">
-                    Go Back
-                </button>
-
-                <button type="button" @click="confirmBooking()"
-                    class="flex-1 rounded-lg bg-black px-4 py-3 font-semibold text-white transition hover:bg-gray-800">
-                    Confirm Booking
-                </button>
-            </div>
-
         </div>
     </div>
 </template>
