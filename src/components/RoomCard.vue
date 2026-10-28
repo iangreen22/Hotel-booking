@@ -35,7 +35,7 @@ export default {
         <p>Guests: {{ unit.capacity }}</p>
         
         <p class="font-bold">
-          ${{ unit.price }} per night
+          ₱ {{ unit.price }} per night
         </p>
         <p>Ameneties: {{ unit.amenities }}</p>
         
