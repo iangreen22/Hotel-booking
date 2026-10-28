@@ -1,6 +1,6 @@
 <script>
 export default {
-    props: ['reservations']
+    props: ['res2']
 }
 </script>
 
@@ -11,16 +11,17 @@ export default {
 
         <div  class="text-gray-500">No reservations yet.</div>
 
-        <div v-for="booking in reservations" :key="booking.id" class="border rounded-lg p-5 mb-4 bg-white shadow">
+        <div v-for="booking in res2" :key="booking.id" class="border rounded-lg p-5 mb-4 bg-white shadow">
 
-            <h2 class="text-xl font-bold">{{ booking.roomName }}</h2>
+            <!-- <h2 class="text-xl font-bold">{{ booking.roomName }}</h2> -->
 
-            <p>Guest: {{ booking.guestName }}</p>
+            <p>Guest: {{ booking.fullName }}</p>
             <p>Check-in: {{ booking.checkIn }}</p>
             <p>Check-out: {{ booking.checkOut }}</p>
             <p>Guests: {{ booking.guests }}</p>
-            <p>Nights: {{ booking.nights }}</p>
-            <p class="font-bold mt-2">Total: ${{ booking.total }}</p>
+            <p>Nights: {{ booking.totalNights }}</p>
+            <p class="font-bold mt-2">Total: ${{ booking.totalCost }}</p>
+
             <p class="text-green-600 font-semibold mt-2">Confirmed</p>
 
         </div>
