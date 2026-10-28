@@ -31,18 +31,24 @@ export default {
                 exceptional hospitality at JIB's Hotel.
             </p>
 
-            <div class="flex gap-5">
-                <a @click="menu('roomlist')" href="#rooms" class="inline-block mt-8 bg-white text-black px-8 py-3
-                      rounded-md font-semibold hover:bg-zinc-300 transition ">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full">
+
+
+                <a @click="menu('roomlist')" href="#rooms"
+                    class="flex items-center justify-center w-full sm:w-auto mt-4 sm:mt-8 px-5 sm:px-8 py-3 bg-white text-black rounded-md font-semibold text-sm sm:text-base text-center hover:bg-zinc-300 transition duration-300 cursor-pointer">
                     Explore Our Rooms
                 </a>
-                <div class="inline-block mt-8 bg-white rounded-md font-semibold  transition">
-                    <input
-                        class="outline-none rounded-l-md border border-zinc-500 h-full px-2 placeholder:text-sm placeholder:text-zinc-500 placeholder:italic placeholder:font-normal"
-                        type="text" placeholder="search for available rooms">
 
-                    <button class="px-3 h-full hover:bg-zinc-300 rounded-r-md">search</button>
+                <!-- Search Bar -->
+                <div
+                    class="flex items-stretch w-full sm:w-auto sm:min-w-0 mt-0 sm:mt-8 bg-white rounded-md font-semibold transition">
+                    <input type="text" placeholder="Search available rooms"
+                        class="min-w-0 flex-1 px-3 py-3 border border-zinc-500 rounded-l-md outline-none text-sm text-black placeholder:text-xs sm:placeholder:text-sm placeholder:text-zinc-500 placeholder:italic font-normal focus:border-black" />
 
+                    <button type="button"
+                        class="shrink-0 px-4 sm:px-5 py-3 bg-white text-black border border-l-0 border-zinc-500 rounded-r-md text-sm sm:text-base hover:bg-zinc-300 transition duration-300 cursor-pointer">
+                        Search
+                    </button>
                 </div>
 
             </div>

@@ -68,8 +68,8 @@ export default {
             </select>
 
             <div>
-                <p>Max Price: €{{ maxPrice }}</p>
-                <input type="range" v-model.number="maxPrice" min="90" max="300" step="5">
+                <p>Max Price: Php  {{ maxPrice }}</p>
+                <input type="range" v-model.number="maxPrice" min="1000" max="5000" step="5">
             </div>
 
         </div>
