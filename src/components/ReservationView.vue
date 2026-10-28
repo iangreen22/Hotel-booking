@@ -18,10 +18,9 @@ export default {
             <p>Guest: {{ booking.fullName }}</p>
             <p>Check-in: {{ booking.checkIn }}</p>
             <p>Check-out: {{ booking.checkOut }}</p>
-            <p>Room: {{ booking.roomPrice }}</p>
             <p>Guests: {{ booking.guests }}</p>
             <p>Nights: {{ booking.totalNights }}</p>
-            <p class="font-bold mt-2">Total: ₱ {{ booking.roomPrice * booking.totalNights }}</p>
+            <p class="font-bold mt-2">Total: ₱ {{ booking.roomPrice}}</p>
 
             <p class="text-green-600 font-semibold mt-2">Confirmed</p>
 
