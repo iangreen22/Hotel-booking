@@ -110,6 +110,7 @@ export default {
         finalConfirmation(fullName,guests, checkIn, checkOut, totalNights,roomPrice, totalCost){
             this.reservePage.push({...fullName,...guests, ...checkIn, ...checkOut, ...totalNights,...roomPrice, ...totalCost})
             this.confirm = false;
+            this.showConfirmModal = [];
             alert("successfully book!")
         },
 
