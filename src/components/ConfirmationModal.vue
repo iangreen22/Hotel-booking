@@ -2,11 +2,19 @@
 export default {
     props: ['toConfirm'],
 
-    emits: ['confirm', 'close'],
+    emits: ['goConfirm', 'close'],
 
     methods: {
-        confirmBooking() {
-            this.$emit('confirm')
+        confirmBooking(fullName,guests, checkIn, checkOut, totalNights,roomPrice, totalCost) {
+            this.$emit('goConfirm',{
+                fullName: fullName,
+                guests: guests,
+                checkIn: checkIn,
+                checkOut: checkOut,
+                totalNights: totalNights,
+                roomPrice: roomPrice,
+                totalCost: totalCost,
+            })
         },
 
         closeModal() {
@@ -49,12 +57,12 @@ export default {
             </div>
 
             <!-- Booking Details Card -->
-            <div class="m-6 rounded-xl border border-gray-200 p-5">
+            <div v-for="firm in toConfirm" :key="firm.id" class="m-6 rounded-xl border border-gray-200 p-5">
 
                 <div class="mb-4 border-b border-dashed border-gray-300 pb-4">
                     <p class="text-sm text-gray-500">Guest Name</p>
                     <p class="text-lg font-bold text-gray-800">
-                        {{ toConfirm.fullName }}
+                        {{ firm.fullName }}
                     </p>
                 </div>
 
@@ -64,14 +72,14 @@ export default {
                         <div>
                             <p class="text-sm text-gray-500">Check-in</p>
                             <p class="font-semibold text-gray-800">
-                                {{ toConfirm.checkIn }}
+                                {{ firm.checkIn }}
                             </p>
                         </div>
 
                         <div class="text-right">
                             <p class="text-sm text-gray-500">Check-out</p>
                             <p class="font-semibold text-gray-800">
-                                {{ toConfirm.checkOut }}
+                                {{ firm.checkOut }}
                             </p>
                         </div>
                     </div>
@@ -79,15 +87,15 @@ export default {
                     <div class="flex justify-between">
                         <span class="text-gray-500">Duration</span>
                         <span class="font-semibold text-gray-800">
-                            {{ toConfirm.totalNights }}
-                            {{ toConfirm.totalNights === 1 ? 'night' : 'nights' }}
+                            {{ firm.totalNights }}
+                            {{ firm.totalNights === 1 ? 'night' : 'nights' }}
                         </span>
                     </div>
 
                     <div class="flex justify-between">
                         <span class="text-gray-500">Room Price / Night</span>
                         <span class="font-semibold text-gray-800">
-                            ₱{{ Number(toConfirm.roomPrice).toLocaleString('en-PH') }}
+                            ₱{{ Number(firm.roomPrice).toLocaleString('en-PH') }}
                         </span>
                     </div>
 
@@ -98,7 +106,7 @@ export default {
                     <span class="font-bold text-black">Total Cost</span>
 
                     <span class="text-2xl font-bold text-black">
-                        ₱{{ (toConfirm.totalNights * toConfirm.roomPrice).toLocaleString('en-PH') }}
+                        ₱{{ (firm.totalNights * firm.roomPrice).toLocaleString('en-PH') }}
                     </span>
                 </div>
             </div>
@@ -110,7 +118,7 @@ export default {
                     Go Back
                 </button>
 
-                <button type="button" @click="confirmBooking"
+                <button type="button" @click="confirmBooking()"
                     class="flex-1 rounded-lg bg-black px-4 py-3 font-semibold text-white transition hover:bg-gray-800">
                     Confirm Booking
                 </button>
