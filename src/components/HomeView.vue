@@ -1,9 +1,20 @@
 <script>
+export default {
+    emits: ['go-home'],
+    data() {
+        return {}
+    },
+    methods: {
+        menu(page) {
+            this.$emit('go-home', page)
+        }
+    }
+}
 </script>
 
 <template>
     <section class="min-h-screen flex items-center bg-cover bg-center"
-        style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1800&q=80');">
+        style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('https://plus.unsplash.com/premium_photo-1661929519129-7a76946c1d38?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D');">
 
         <div class="max-w-7xl mx-auto px-6 py-24 w-full">
 
@@ -20,11 +31,27 @@
                 exceptional hospitality at JIB's Hotel.
             </p>
 
-            <a href="#rooms" class="inline-block mt-8 bg-white text-black px-8 py-3
-                      rounded-md font-semibold hover:bg-zinc-300 transition">
-                Explore Our Rooms
-            </a>
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full">
 
+
+                <a @click="menu('roomlist')" href="#rooms"
+                    class="flex items-center justify-center w-full sm:w-auto mt-4 sm:mt-8 px-5 sm:px-8 py-3 bg-white text-black rounded-md font-semibold text-sm sm:text-base text-center hover:bg-zinc-300 transition duration-300 cursor-pointer">
+                    Explore Our Rooms
+                </a>
+
+                <!-- Search Bar -->
+                <div
+                    class="flex items-stretch w-full sm:w-auto sm:min-w-0 mt-0 sm:mt-8 bg-white rounded-md font-semibold transition">
+                    <input type="text" placeholder="Search available rooms"
+                        class="min-w-0 flex-1 px-3 py-3 border border-zinc-500 rounded-l-md outline-none text-sm text-black placeholder:text-xs sm:placeholder:text-sm placeholder:text-zinc-500 placeholder:italic font-normal focus:border-black" />
+
+                    <button type="button"
+                        class="shrink-0 px-4 sm:px-5 py-3 bg-white text-black border border-l-0 border-zinc-500 rounded-r-md text-sm sm:text-base hover:bg-zinc-300 transition duration-300 cursor-pointer">
+                        Search
+                    </button>
+                </div>
+
+            </div>
         </div>
     </section>
 
@@ -34,7 +61,7 @@
                 <h1 class="text-3xl mt-2 md:text-4xl font-semibold text-gray-800">
                     Our <span class="text-emerald-600"> Featured</span> Rooms
                 </h1>
-            
+
             </div>
             <div class="flex flex-col md:flex-row w-full">
                 <div class="basis-1/3 w-full border border-gray-100 dark:!border-gray-600 rounded-md pr-0 md:mr-4 mt-6">
@@ -139,7 +166,7 @@
             </div>
         </div>
     </div>
-    
+
 
 
 </template>

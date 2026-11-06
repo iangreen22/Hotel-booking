@@ -1,66 +1,9 @@
 <script>
 
 export default {
-
+    props:['roomData'],
     data() {
         return {
-            rooms: [
-                {
-                    id: 1,
-                    name: 'Deluxe Suite',
-                    type: 'Suite',
-                    price: 195,
-                    capacity: 4,
-                    image: '/images/suite.jpg',
-                    amenities: ['WiFi', 'Aircon', 'TV', 'Breakfast']
-                },
-                {
-                    id: 2,
-                    name: 'Deluxe Room',
-                    type: 'Deluxe',
-                    price: 125,
-                    capacity: 2,
-                    image: '/images/deluxe.jpg',
-                    amenities: ['WiFi', 'Aircon', 'TV']
-                },
-                {
-                    id: 3,
-                    name: 'Standard Room',
-                    type: 'Standard',
-                    price: 95,
-                    capacity: 2,
-                    image: '/images/standard.jpg',
-                    amenities: ['WiFi', 'Aircon']
-                },
-                {
-                    id: 4,
-                    name: 'Family Suite',
-                    type: 'Suite',
-                    price: 220,
-                    capacity: 5,
-                    image: '/images/family.jpg',
-                    amenities: ['WiFi', 'Aircon', 'TV', 'Breakfast']
-                },
-                {
-                    id: 5,
-                    name: 'Twin Room',
-                    type: 'Standard',
-                    price: 110,
-                    capacity: 2,
-                    image: '/images/twin.jpg',
-                    amenities: ['WiFi', 'TV']
-                },
-                {
-                    id: 6,
-                    name: 'Executive Room',
-                    type: 'Deluxe',
-                    price: 165,
-                    capacity: 3,
-                    image: '/images/executive.jpg',
-                    amenities: ['WiFi', 'Aircon', 'TV', 'Mini Bar']
-                }
-            ],
-
             roomType: 'All',
             guests: 1,
             maxPrice: 300,
@@ -101,35 +44,86 @@ export default {
 </script>
 
 <template>
-    <div class="p-6">
+   <div class="mt-20 sm:mt-24 lg:mt-30 mx-4 sm:mx-6 lg:mx-10 xl:mx-15">
 
-        <h1 class="text-3xl font-bold mb-5">
-            Our Rooms
-        </h1>
+    <!-- Section Title -->
+    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-5">
+        Our Rooms
+    </h1>
 
-        <div class="flex gap-4 mb-6">
+    <!-- Filters -->
+    <div class="flex flex-col sm:flex-row sm:flex-wrap 
+                sm:items-end gap-4 sm:gap-5 mb-6">
 
-            <select v-model="roomType" class="border p-2 rounded">
+        <!-- Room Type -->
+        <div class="w-full sm:w-48">
+            <label class="block text-sm font-medium mb-2">
+                Room Type
+            </label>
+
+            <select
+                v-model="roomType"
+                class="w-full border border-gray-300 p-3 rounded-lg
+                       outline-none focus:ring-2 focus:ring-gray-500
+                       bg-white"
+            >
                 <option>All</option>
                 <option>Standard</option>
                 <option>Deluxe</option>
                 <option>Suite</option>
             </select>
+        </div>
 
-            <select v-model.number="guests" class="border p-2 rounded">
+        <!-- Number of Guests -->
+        <div class="w-full sm:w-48">
+            <label class="block text-sm font-medium mb-2">
+                Guests
+            </label>
+
+            <select
+                v-model.number="guests"
+                class="w-full border border-gray-300 p-3 rounded-lg
+                       outline-none focus:ring-2 focus:ring-gray-500
+                       bg-white"
+            >
                 <option :value="1">1 Guest</option>
                 <option :value="2">2 Guests</option>
                 <option :value="3">3 Guests</option>
                 <option :value="4">4 Guests</option>
                 <option :value="5">5 Guests</option>
             </select>
+        </div>
 
-            <div>
-                <p>Max Price: €{{ maxPrice }}</p>
-                <input type="range" v-model.number="maxPrice" min="90" max="300" step="5">
+        <!-- Maximum Price -->
+        <div class="w-full sm:flex-1 sm:min-w-48 sm:max-w-80">
+
+            <div class="flex items-center justify-between gap-3 mb-2">
+                <label class="text-sm font-medium">
+                    Maximum Price
+                </label>
+
+                <span class="font-semibold text-sm whitespace-nowrap">
+                    ₱{{ maxPrice.toLocaleString('en-PH') }}
+                </span>
+            </div>
+
+            <input
+                type="range"
+                v-model.number="maxPrice"
+                min="1000"
+                max="5000"
+                step="5"
+                class="w-full cursor-pointer accent-[#302218]"
+            />
+
+            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                <span>₱1,000</span>
+                <span>₱5,000</span>
             </div>
 
         </div>
 
     </div>
+
+</div>
 </template>
